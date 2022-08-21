@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="styles/main.css">
+<link rel="stylesheet" type="text/css" href="styles/Sidebar.css">
+<link rel ="import" href="Content/HomeContent.html">
+<title>Test Webpage for Commerzbank Karate</title>
+<script type="text/javascript">
+function setHomeContent(SID,Svalue){
+	document.getElementById(SID).innerHTML=Svalue;
+	
+}
+
+function loadContent(attribute,htmlFilePath){
+	z = document.getElementsByTagName("*");
+	for (i = 0; i < z.length; i++) {
+	    elmnt = z[i];
+	    const attrVal = elmnt.getAttribute(attribute);
+	    if(attrVal != null){
+			file= htmlFilePath;
+			elmnt.setAttribute(attribute,htmlFilePath);
+		    if (file) {
+			      /* Make an HTTP request using the attribute value as the file name: */
+			      xhttp = new XMLHttpRequest();
+			      xhttp.onreadystatechange = function() {
+			        if (this.readyState == 4) {
+			          if (this.status == 200) {elmnt.innerHTML = this.responseText;}
+			          if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
+			          /* Remove the attribute, and call this function once more: */
+			          //elmnt.removeAttribute("htmlFile");
+			          //includeHTML();
+			        }
+			      }
+			      xhttp.open("GET", file, true);
+			      xhttp.send();
+			      /* Exit the function: */
+			      return;
+			    }
+	        }
+	    }
+	    
+}
+
+function openNav() {
+	  document.getElementById("mySidebar").style.width = "250px";
+	  document.getElementById("main").style.marginLeft = "250px";
+}
+
+function closeNav() {
+	  document.getElementById("mySidebar").style.width = "0";
+	  document.getElementById("main").style.marginLeft= "0";
+}
+</script>
+</head>
+<body>
+
+	<div id="mySidebar" class="sidebar">
+    	<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+    	<a href="javascript:void(0)" onclick="loadContent('htmlFile','Content/HomeContent.html');">Home</a>
+  		<a href="javascript:void(0)" onclick="loadContent('htmlFile','Content/Training.html');">Training Schedule</a>
+  		<a href="javascript:void(0)" onclick="loadContent('htmlFile','Content/Event.html');">Events</a>
+  		<a href="javascript:void(0)" onclick="loadContent('htmlFile','Content/AboutUs.html');">About Us</a>
+	</div>
+
+	<div id="main">
+  		<button class="openbtn" onclick="openNav()">☰</button>  
+  		<h1>Boxing Squirrel Karate Dojo</h1>
+		<img src="img/images.jpg" alt="Test" class="CenterImg">
+		<hr>
+  		<p><div htmlFile="HomeContent.html"></div></p>
+		</div>
+   <script>loadContent('htmlFile',"Content/HomeContent.html");</script>
+</body>
+</html>

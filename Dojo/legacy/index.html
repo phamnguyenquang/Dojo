@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="ISO-8859-1">
+<link rel="stylesheet" type="text/css" href="styles/main.css">
+<link rel="stylesheet" type="text/css" href="styles/button.css">
+<link rel="stylesheet" type="text/css" href="styles/table_style.css">
+<link rel ="import" href="Content/HomeContent.html">
+<title>Test Webpage for Commerzbank Karate</title>
+<script type="text/javascript">
+function setHomeContent(SID,Svalue){
+	document.getElementById(SID).innerHTML=Svalue;
+	
+}
+
+function loadContent(attribute,htmlFilePath){
+	z = document.getElementsByTagName("*");
+	for (i = 0; i < z.length; i++) {
+	    elmnt = z[i];
+	    const attrVal = elmnt.getAttribute(attribute);
+	    if(attrVal != null){
+			file= htmlFilePath;
+			elmnt.setAttribute(attribute,htmlFilePath);
+		    if (file) {
+			      /* Make an HTTP request using the attribute value as the file name: */
+			      xhttp = new XMLHttpRequest();
+			      xhttp.onreadystatechange = function() {
+			        if (this.readyState == 4) {
+			          if (this.status == 200) {elmnt.innerHTML = this.responseText;}
+			          if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
+			          /* Remove the attribute, and call this function once more: */
+			          //elmnt.removeAttribute("htmlFile");
+			          //includeHTML();
+			        }
+			      }
+			      xhttp.open("GET", file, true);
+			      xhttp.send();
+			      /* Exit the function: */
+			      return;
+			    }
+	        }
+	    }
+	    
+}
+
+</script>
+</head>
+<body>
+	<h1>Commerzbank Karate Dojo</h1>
+	<img src="img/images.jpg" alt="Test" class="CenterImg">
+	<table class="tg">
+		<thead>
+  			<tr>
+    			<th class="buttonColor"><button value="Content/HomeContent.html" class="DefaultButton" onclick="loadContent('htmlFile',this.value);"><span>Home</span></button></th>
+    			<th class="buttonColor"><button value="Content/Training.html" class="DefaultButton" onclick="loadContent('htmlFile',this.value);"><span>Training Schedule</span></button></th>
+    			<th class="buttonColor"><button value="Content/Event.html" class="DefaultButton" onclick="loadContent('htmlFile',this.value);"><span>Events</span></button></th>
+    			<th class="buttonColor"><button value="Content/AboutUs.html" class="DefaultButton" onclick="loadContent('htmlFile',this.value);"><span>About Us</span></button></th>
+    			<!-- <th class="buttonColor"><button value="HomeContent.html" class="DefaultButton" onclick="setHomeContent('Home',this.value)"><span>TestStuff</span></button></th>-->
+  			</tr>
+		</thead>
+		<tbody>
+  			<tr>
+    			<td colspan="4" rowspan="2"><div htmlFile="HomeContent.html"></div></td>
+  			</tr>
+  			<tr>
+  			</tr>
+		</tbody>
+	</table>
+    <!-- <p id="Home">TestParam</p>-->
+   <script>loadContent("/HomeContent.html");</script>
+</body>
+</html>

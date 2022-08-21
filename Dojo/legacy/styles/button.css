@@ -1,0 +1,38 @@
+.DefaultButton {
+	position: relavitve;
+	display: inline-block;
+	margin-top: -10px;
+	padding: 0;
+	font-size: 25px;
+	color: #f74000;
+	background: none;
+	border: none;
+	width: 8em;
+	height: 8em;
+	margin-right: 20px;
+	}
+
+.DefaultButton span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.DefaultButton span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.DefaultButton:hover span {
+  padding-right: 25px;
+}
+
+.DefaultButton:hover span:after {
+  opacity: 1;
+  right: 0;
+}

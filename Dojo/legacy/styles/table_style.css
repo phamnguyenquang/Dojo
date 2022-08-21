@@ -1,0 +1,40 @@
+.tg  {
+	border-collapse:collapse;
+	border-spacing:0;
+	width:100%;	
+	
+}
+.tg td{
+	border-color:black;
+	border-style:solid;
+	border-width:1px;
+	font-family:Arial, sans-serif;
+	font-size:25px;
+    overflow:hidden;
+    padding:10px 5px;
+    word-break:normal;
+    text-align:center;
+    vertical-align:middle;
+    list-style-position: inside;
+}
+.tg th{
+	border-color:black;
+	border-style:solid;
+	border-width:1px;
+	font-family:Arial, sans-serif;
+	font-size:3px;
+    font-weight:normal;
+    overflow:hidden;
+    padding:10px 5px;
+    word-break:normal;
+}
+.tg .buttonColor{
+	background-color:#ffffff;
+	border-color:#2D3842;
+	border-style:solid;
+	border-width:1px;
+	text-align:left;
+	vertical-align:top;
+	font-family:Arial, sans-serif;
+	font-size:30px;
+}

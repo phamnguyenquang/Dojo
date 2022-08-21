@@ -1,0 +1,20 @@
+h1, h2, h3 {
+	text-align: center;
+}
+
+h1 {
+	color: #2D3842;
+}
+
+body {
+	background-color:  #ffffff;
+}
+
+body .subBody{
+	background-color:  #2D3842;
+}
+
+.CenterImg {
+	display: block;
+	margin: 10px auto 20px;
+}
