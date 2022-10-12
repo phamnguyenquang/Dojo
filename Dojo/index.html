@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="ISO-8859-1">
+<link rel="stylesheet" type="text/css" href="styles/main.css">
+<link rel="stylesheet" type="text/css" href="styles/button.css">
+<link rel="stylesheet" type="text/css" href="styles/table_style.css">
+<link rel ="import" href="Content/HomeContent.html">
+<title>Test Webpage for Commerzbank Karate</title>
+<script type="text/javascript">
+function setHomeContent(SID,Svalue){
+	document.getElementById(SID).innerHTML=Svalue;
+	
+}
+
+function loadContent(attribute,htmlFilePath){
+	z = document.getElementsByTagName("*");
+	for (i = 0; i < z.length; i++) {
+	    elmnt = z[i];
+	    const attrVal = elmnt.getAttribute(attribute);
+	    if(attrVal != null){
+			file= htmlFilePath;
+			elmnt.setAttribute(attribute,htmlFilePath);
+		    if (file) {
+			      /* Make an HTTP request using the attribute value as the file name: */
+			      xhttp = new XMLHttpRequest();
+			      xhttp.onreadystatechange = function() {
+			        if (this.readyState == 4) {
+			          if (this.status == 200) {elmnt.innerHTML = this.responseText;}
+			          if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
+			          /* Remove the attribute, and call this function once more: */
+			          //elmnt.removeAttribute("htmlFile");
+			          //includeHTML();
+			        }
+			      }
+			      xhttp.open("GET", file, true);
+			      xhttp.send();
+			      /* Exit the function: */
+			      return;
+			    }
+	        }
+	    }
+	    
+}
+
+</script>
+</head>
+<body>
+	<div id="main">
+  		<h1>Commerzbank Risu Dojo</h1>
+  		<br>
+		<img src="img/imagesquirrel.jpg" alt="Test" class="CenterImg">
+  		<p><div htmlFile="HomeContent.html"></div></p>
+		</div>
+   <script>loadContent('htmlFile',"Content/HomeContent.html");</script>
+</body>
+</html>
